@@ -37,5 +37,5 @@ public class Entrega {
 	@Enumerated(EnumType.STRING)
 	private StatusEntrega status;
 	private LocalDateTime dataPedido;
-	private LocalDateTime dataFinalizada;
+	private LocalDateTime dataFinalizacao;
 }

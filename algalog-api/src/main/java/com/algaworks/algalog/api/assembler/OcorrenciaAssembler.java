@@ -1,5 +1,8 @@
 package com.algaworks.algalog.api.assembler;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -19,5 +22,12 @@ public class OcorrenciaAssembler {
 	
 	public Ocorrencia toEntity(OcorrenciaModel ocorrenciaModel) {
 		return modelMapper.map(ocorrenciaModel,Ocorrencia.class);
+	}
+	
+	public List<OcorrenciaModel>toCollectModel(List<Ocorrencia> ocorrencias){
+		
+		return ocorrencias.stream()
+				.map(this::toModel)
+				.collect(Collectors.toList());
 	}
 }

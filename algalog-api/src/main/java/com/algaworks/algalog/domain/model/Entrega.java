@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,4 +49,17 @@ public class Entrega {
 	
 	private OffsetDateTime dataPedido;
 	private OffsetDateTime dataFinalizacao;
+	
+	
+	public Ocorrencia adicionarOcorrencia(String descricao) {
+		// TODO Auto-generated method stub
+		Ocorrencia ocorrencia = new Ocorrencia();
+		ocorrencia.setDescricao(descricao);
+		ocorrencia.setDataRegistro(OffsetDateTime.now());
+		ocorrencia.setEntrega(this);
+		this.getOcorrencias().add(ocorrencia);
+		
+		return ocorrencia;
+		
+	}
 }

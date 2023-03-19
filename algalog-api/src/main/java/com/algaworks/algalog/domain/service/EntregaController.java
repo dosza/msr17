@@ -2,6 +2,7 @@ package com.algaworks.algalog.domain.service;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ public class EntregaController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Entrega solicitar(Entrega entrega) {
+	public Entrega solicitar(@RequestBody Entrega entrega) {
 		return solicitacaoEntregaService.solicitar(entrega);
 	}
 }

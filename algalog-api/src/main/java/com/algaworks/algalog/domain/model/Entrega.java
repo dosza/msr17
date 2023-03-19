@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,6 +34,7 @@ public class Entrega {
 	private Destinatario destinatario;
 	
 	private BigDecimal taxa;
+	@Enumerated(EnumType.STRING)
 	private StatusEntrega status;
 	private LocalDateTime dataPedido;
 	private LocalDateTime dataFinalizada;

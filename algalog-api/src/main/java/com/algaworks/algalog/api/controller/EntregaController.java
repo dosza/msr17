@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,7 @@ public class EntregaController {
 
 	private SolicitacaoEntregaService solicitacaoEntregaService;
 	private EntregaRepository entregaRepository;
+	private ModelMapper modelMapper;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
@@ -45,24 +47,8 @@ public class EntregaController {
 	@GetMapping("/{entregaId}")
 	public ResponseEntity<EntregaModel> buscar(@PathVariable Long entregaId) {
 		return entregaRepository.findById(entregaId).map(entrega -> {
-			
-			EntregaModel entregaModel = new EntregaModel();
-			DestinatarioModel destinatarioModel = new DestinatarioModel();
-			Destinatario destinatario = entrega.getDestinatario();
-			destinatarioModel.setNome(destinatario.getNome());
-			destinatarioModel.setLogradouro(destinatario.getLogradouro());
-			destinatarioModel.setBairro(destinatario.getBairro());
-			destinatarioModel.setComplemento(destinatario.getComplemento());
-			destinatarioModel.setNumero(destinatario.getNumero());
-			entregaModel.setId(entrega.getId());
-			entregaModel.setNomeCliente(entrega.getCliente().getNome());
-			entregaModel.setDestinatario(destinatarioModel);
-			entregaModel.setTaxa(entrega.getTaxa());
-			entregaModel.setStatus(entrega.getStatus());
-			entregaModel.setDataPedido(entrega.getDataPedido());
-			entregaModel.setDataFinalizacao(entrega.getDataFinalizacao());
-			
-			return ResponseEntity.ok(entregaModel);
+			EntregaModel entregaModel = modelMapper.map(entrega, EntregaModel.class);
+			return  ResponseEntity.ok(entregaModel);
 
 		}).orElse(ResponseEntity.notFound().build());
 	}

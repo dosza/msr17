@@ -74,7 +74,7 @@ public class Entrega {
 
 	public void finalizar() {
 		// TODO Auto-generated method stub
-		if (!naoPodeSerFinalizada()) {
+		if (naoPodeSerFinalizada()) {
 			throw new NegocioException("A entrega não pode ser finalizada");
 		}
 		this.setStatus(StatusEntrega.FINALIZADA);

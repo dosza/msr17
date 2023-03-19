@@ -15,6 +15,6 @@ public class BuscaEntregaService {
 	public Entrega buscar(Long entregaId) {
 		return entregaRepository.findById(entregaId)
 				.orElseThrow( () -> new EntidadeNaoEncontradaException("Entrega não encontrada"));
-		
+		  
 	}
 }

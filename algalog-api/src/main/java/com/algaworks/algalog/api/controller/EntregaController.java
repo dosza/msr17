@@ -1,4 +1,4 @@
-package com.algaworks.algalog.domain.service;
+package com.algaworks.algalog.api.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.algaworks.algalog.domain.model.Entrega;
+import com.algaworks.algalog.domain.service.SolicitacaoEntregaService;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/entrega")
+@RequestMapping("/entregas")
 public class EntregaController {
 
 	private SolicitacaoEntregaService solicitacaoEntregaService;

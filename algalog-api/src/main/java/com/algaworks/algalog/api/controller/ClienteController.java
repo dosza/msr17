@@ -66,7 +66,7 @@ public class ClienteController {
 		if ( ! clienteRepository.existsById(clienteId))
 			return ResponseEntity.notFound().build();
 		
-		catalogoClienteService.excluir(clienteId); 
+		catalogoClienteService.excluir(clienteId);  
 		return ResponseEntity.noContent().build();
 		
 	}

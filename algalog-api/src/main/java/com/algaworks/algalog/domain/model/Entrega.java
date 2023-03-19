@@ -3,6 +3,7 @@ package com.algaworks.algalog.domain.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,10 @@ public class Entrega {
 	
 	@ManyToOne
 	private Cliente cliente;
+	
+	@Embedded
 	private Destinatario destinatario;
+	
 	private BigDecimal taxa;
 	private StatusEntrega status;
 	private LocalDateTime dataPedido;
